@@ -35,4 +35,3 @@ function getResults (trimmedSearchValue) {
     // console.log(results[0].volumeInfo.title);
     return results;
 }  
-

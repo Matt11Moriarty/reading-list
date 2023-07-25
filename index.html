@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Book Finder</title>
 </head>
 <body>
     <header>
@@ -12,6 +12,34 @@
             <h1 class="text-7xl font-bold text-gray-900 text-center">Reading List</h1>
         </div>
     </header>
+    <div class="content-center">
+        <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="open-modal">About This Site</button>
+    </div>
+    <div class="fixed inset-0 flex items-center justify-center z-50 hidden" id="modal">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
     
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <!-- Modal content goes here -->
+                <p>This site will display a reading list using the parameters you enter. A list will be generated featuring a list of ten books, additional information will be presented for each entry. </p>
+                <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="close-modal">Close</button>     
+                <script>
+                    // modal logic 
+                    const openModalButton = document.getElementById('open-modal');
+                    const closeModalButton = document.getElementById('close-modal');
+                    const modal = document.getElementById('modal');
+                
+                    openModalButton.addEventListener('click', () => {
+                        modal.classList.remove('hidden');
+                    });
+                
+                    closeModalButton.addEventListener('click', () => {
+                        modal.classList.add('hidden');
+                    });
+                </script>                    
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
