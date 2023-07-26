@@ -2,13 +2,15 @@
 var googleApiKey = 'AIzaSyCMRulduu9lrdze-0XMvjZD3qSv5Kweg_g'
 var googleApi = 'https://www.googleapis.com/books/v1/volumes?' 
 
-//https://exchangeratesapi.io/documentation/
-var currencyApiKey = '24aa4e075dc27e2a5c15317a64279553'
+var gifApiKey = 'BapaP6tBvX47P2VTz6hSD0ZageGjw2Mu'
+var gifApi = 'https://api.giphy.com/v1/gifs/search?'
+//https://api.giphy.com/v1/gifs/search?limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips&q=harry+potter&api_key=BapaP6tBvX47P2VTz6hSD0ZageGjw2Mu
 
 //query selectors
 
 var searchButton = document.querySelector('#searchButton');
 var searchInput = document.querySelector('#searchBar');
+var gifElement = document.querySelector('#gifEl');
 
 //event listener
 searchButton.addEventListener('click', function () {
@@ -21,7 +23,8 @@ searchButton.addEventListener('click', function () {
 //replaces " " with "+"
 function formatSearch (unformattedSearch) {
     var formattedSearch = unformattedSearch.replace(/\s+/g, '+');
-    return getResults(formattedSearch);
+    getResults(formattedSearch);
+    getGif(formattedSearch);
 }
 
 
@@ -47,6 +50,19 @@ function getResults (trimmedSearchValue) {
     
 }  
 
+//get gif api
+function getGif (trimmedSearchValue) {
+    var gifResultApi = `${gifApi}limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips&q=${trimmedSearchValue}&api_key=${gifApiKey}`
+
+    fetch(gifResultApi)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var link = data.data[0].images.original.url;
+        return generateGif(link);
+    })
+}
 
 //create list 
 function generateResultsList (resultsArray) {
@@ -63,7 +79,12 @@ function generateResultsList (resultsArray) {
             </div>
         </div>
         `;
-
     }
+}
+
+function generateGif (gifLink) {
+    gifElement.innerHTML += `
+    <img src="${gifLink}" alt="Gif from search result">
+    `
 }
 
