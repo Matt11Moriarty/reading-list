@@ -49,6 +49,33 @@ function getResults (trimmedSearchValue) {
     // console.log(results[0].volumeInfo.title);
     
 }  
+// event listener for "add to reading list"
+searchResults.addEventListener('click', function (event) {
+    if (event.target.classList.contains('btn-primary')) {
+        var card = event.target.closest('.card');
+        var title = card.querySelector('.card-title').textContent;
+        var authors = card.querySelector('.card-text:nth-child(3)').textContent;
+        var smallThumbnail = card.querySelector('.card-img-top').getAttribute('src')
+        addtoReadingList(title, authors, smallThumbnail);
+    }
+});
+
+//get reading list from local storage
+function addtoReadingList(title, authors, smallThumbnail) {
+    var existingList = JSON.parse(localStorage.getItem('readingList')) || [];
+    var isBookInList = existingList.some(function(book) {
+        return book.title === title;
+    });
+
+    if (!isBookInList) {
+        existingList.push( {
+            title: title,
+            authors: authors,
+            smallThumbnail: smallThumbnail
+        });
+        localStorage.setItem('readingList', JSON.stringify(existingList));
+    }
+}
 
 //get gif api
 function getGif (trimmedSearchValue) {
