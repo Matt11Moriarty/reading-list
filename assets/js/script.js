@@ -67,3 +67,4 @@ function generateResultsList (resultsArray) {
 
     }
 }
+
