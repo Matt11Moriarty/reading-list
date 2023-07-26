@@ -1,10 +1,14 @@
 
-var apiKey = 'AIzaSyCMRulduu9lrdze-0XMvjZD3qSv5Kweg_g'
+var googleApiKey = 'AIzaSyCMRulduu9lrdze-0XMvjZD3qSv5Kweg_g'
 var googleApi = 'https://www.googleapis.com/books/v1/volumes?' 
+
+//https://exchangeratesapi.io/documentation/
+var currencyApiKey = '24aa4e075dc27e2a5c15317a64279553'
 
 //query selectors
 var searchButton = document.querySelector('#searchButton');
 var searchInputValue = document.querySelector('#searchBar').value;
+var testParent = document.querySelector('#test1');
 
 //event listeners
 searchButton.addEventListener('click', formatSearch(searchInputValue));
@@ -35,4 +39,3 @@ function getResults (trimmedSearchValue) {
     // console.log(results[0].volumeInfo.title);
     return results;
 }  
-
