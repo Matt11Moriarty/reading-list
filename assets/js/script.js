@@ -10,7 +10,7 @@ var currencyApiKey = '24aa4e075dc27e2a5c15317a64279553'
 // var searchButton = document.querySelector('#searchButton');
 // var searchInputValue = document.querySelector('#searchBar').value;
 var testParent = document.querySelector('#modal');
-=======
+
 var searchButton = document.querySelector('#searchButton');
 var searchInputValue = document.querySelector('#searchBar').value;
 var testParent = document.querySelector('#test1');
@@ -64,3 +64,4 @@ function generateResultsList (resultsArray) {
 
     }
 }
+
