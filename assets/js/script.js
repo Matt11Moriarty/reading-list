@@ -8,15 +8,17 @@ var currencyApiKey = '24aa4e075dc27e2a5c15317a64279553'
 //query selectors
 // var searchButton = document.querySelector('#searchButton');
 // var searchInputValue = document.querySelector('#searchBar').value;
-var testParent = document.querySelector('#modal');
+
 
 var searchButton = document.querySelector('#searchButton');
-var searchInputValue = document.querySelector('#searchBar').value;
-var testParent = document.querySelector('#test1');
+var searchInput = document.querySelector('#searchBar');
+var searchResults = document.querySelector('#searchResults');
 
 //event listeners
-searchButton.addEventListener('click', formatSearch(searchInputValue));
-
+searchButton.addEventListener('click', function () {
+    var searchInputValue = searchInput.value;
+    formatSearch(searchInputValue);
+});
 
 //functions
 
@@ -49,11 +51,12 @@ function getResults (trimmedSearchValue) {
     
 }  
 
+
 //create list 
 function generateResultsList (resultsArray) {
     for (let i = 0; i < resultsArray.length; i++) {
         const book = resultsArray[i];
-        testParent.innerHTML += `        
+        searchResults.innerHTML += `        
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="${book.volumeInfo.imageLinks.smallThumbnail}" alt="Image of ${book.volumeInfo.title} cover">
             <div class="card-body">
@@ -67,3 +70,4 @@ function generateResultsList (resultsArray) {
 
     }
 }
+
