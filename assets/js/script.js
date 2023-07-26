@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 
 var googleApiKey = 'AIzaSyCMRulduu9lrdze-0XMvjZD3qSv5Kweg_g'
 var googleApi = 'https://www.googleapis.com/books/v1/volumes?' 
@@ -11,6 +12,7 @@ var gifApi = 'https://api.giphy.com/v1/gifs/search?'
 var searchButton = document.querySelector('#searchButton');
 var searchInput = document.querySelector('#searchBar');
 var gifElement = document.querySelector('#gifEl');
+var cancelButton = document.querySelector('#cancelButton');
 
 //event listener
 searchButton.addEventListener('click', function () {
@@ -77,6 +79,19 @@ function addtoReadingList(title, authors, smallThumbnail) {
     }
 }
 
+// event listener for cancel button
+cancelButton.addEventListener('click', function () {
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+})
+
+  // Event listener for the form's submit event
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var searchInputValue = searchInput.value;
+    formatSearch(searchInputValue);
+  });
+
 //get gif api
 function getGif (trimmedSearchValue) {
     var gifResultApi = `${gifApi}limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips&q=${trimmedSearchValue}&api_key=${gifApiKey}`
@@ -115,3 +130,4 @@ function generateGif (gifLink) {
     `
 }
 
+});
