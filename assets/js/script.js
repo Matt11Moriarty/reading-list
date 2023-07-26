@@ -6,15 +6,11 @@ var googleApi = 'https://www.googleapis.com/books/v1/volumes?'
 var currencyApiKey = '24aa4e075dc27e2a5c15317a64279553'
 
 //query selectors
-// var searchButton = document.querySelector('#searchButton');
-// var searchInputValue = document.querySelector('#searchBar').value;
-
 
 var searchButton = document.querySelector('#searchButton');
 var searchInput = document.querySelector('#searchBar');
-var searchResults = document.querySelector('#searchResults');
 
-//event listeners
+//event listener
 searchButton.addEventListener('click', function () {
     var searchInputValue = searchInput.value;
     formatSearch(searchInputValue);
