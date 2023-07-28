@@ -20,6 +20,7 @@ function displayReadingList () {
             <div class="card">
                 <div class="card-header bg-success">
                 Available
+                <button onclick="removeBook(${i})"class="btn btn-danger btn-sm float-end">Remove</button>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${book.title}</h5>
@@ -36,6 +37,7 @@ function displayReadingList () {
             <div class="card">
                 <div class="card-header bg-danger">
                 This book is unavailable
+                <button onclick="removeBook(${i})"class="btn btn-danger btn-sm float-end">Remove</button>
                 </div>
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
@@ -50,5 +52,11 @@ function displayReadingList () {
     }
 
 }
-
+//remove button function
+function removeBook(index) {
+    var listFromStorage = JSON.parse(localStorage.getItem('readingList'));
+    listFromStorage.splice(index, 1);
+    localStorage.setItem('readingList', JSON.stringify(listFromStorage));
+    displayReadingList(); //refresh list after removal
+}
 
