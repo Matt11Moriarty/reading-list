@@ -13,6 +13,8 @@ var searchButton = document.querySelector('#searchButton');
 var searchInput = document.querySelector('#searchBar');
 var gifElement = document.querySelector('#gifEl');
 var cancelButton = document.querySelector('#cancelButton');
+var searchResults = document.querySelector('#searchResults')
+
 
 //event listener
 searchButton.addEventListener('click', function () {
