@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Caveat', cursive;
+    font-family: 'Caladea', serif;
 }
    /* Additional styles for the modal */
 .modal {
@@ -17,3 +17,4 @@ body {
 .modal-container {
     z-index: 51;
 }
+

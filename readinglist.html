@@ -16,13 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body style="background-image: url('./assets/images/library_image.avif');height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;">
     <div class="content-center">
         <h1 class="text-7xl font-bold text-gray-900 text-center">Saved Reading List</h1>
     </div>
     <main>
-      <a href="./index.html">Go to home</a>
-      <Div class = "readingList"></Div>
+      <button onclick="location.href='./index.html'" type="button" class="btn btn-light my-2">Go to home</button>
+      
+      <div id="readingList"></div>
     </main>
     <script src="./assets/js/readinglist.js"></script>
 </body>
