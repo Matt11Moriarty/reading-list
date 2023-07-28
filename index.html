@@ -12,15 +12,15 @@
     />
     <title>Document</title>
 </head>
-<body>
-    <header>
+<body class="bg-indigo-200 text-center">
+    <header class="mb-20">
         <div class="content-center">
             <h1 class="text-7xl font-bold text-gray-900 text-center">Reading List</h1>
         </div>
     </header>
 <!-- feature-styling -->
-
-<form class="w-full max-w-sm" >
+<div class="grid grid-rows-15 grid-flow-col grid-flow-row grid-cols-15 gap-x-5"> 
+<form class="w-full max-w-sm " >
     <div class="flex items-center border-b border-blue-500 py-2">
       <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Search For Any Book" aria-label="Search" id="searchBar">
       <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button" id="searchButton">
@@ -30,13 +30,18 @@
         Cancel
       </button>
     </div>
-    
-  </form>
-    <div class="content-center">
+    <div class="content-center row-start-3">
         <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="open-modal">About This Site</button>
     </div>
-    <div id="gifEl"></div>
-    <div id="searchResults"></div>
+
+    <div class="mt-5 row-start-5" id="gifEl"></div>
+
+  </form>
+   
+    <div class="flex flex-wrap col-start-4 col-span-12 row-span-full" id="searchResults"></div>
+
+</div>  
+
     <div class="fixed inset-0 flex items-center justify-center z-50 hidden" id="modal">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
     
@@ -44,7 +49,8 @@
             <div class="modal-content py-4 text-left px-6">
                 <!-- Modal content goes here -->
                 <p>This site will display a reading list using the parameters you enter. A list will be generated featuring a list of ten books, additional information will be presented for each entry. </p>
-                <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="close-modal">Close</button>     
+                <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="close-modal">Close</button>
+                
                 <script>
                     // modal logic 
                     const openModalButton = document.getElementById('open-modal');
