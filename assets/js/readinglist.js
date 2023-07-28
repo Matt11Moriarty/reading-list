@@ -1,8 +1,8 @@
 
 
-var readingList = document.querySelector('.readingList');
+var readingList = document.querySelector('#readingList');
 
-readingList.addEventListener("click", displayReadingList)
+displayReadingList ()
 
 function displayReadingList () {
     readingList.innerHTML = '';
@@ -11,16 +11,38 @@ function displayReadingList () {
     for (let i = 0; i < listFromStorage.length; i++) {
         const book = listFromStorage[i];
         console.log(book);
+
+        
+
         if (book.buyNowUrl !== '') {
-            var buyNow = book.buyNowUrl
             readingList.innerHTML += `
-            <h4>${book.title}</h4><button onclick="location.href = '${book.buyNowUrl}'" type="button" class="btn btn-primary">Buy Now</button>
+            <div class="card col-8 py-15px mb-3">
+            <div class="card">
+                <div class="card-header">
+                Available
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${book.title}</h5>
+                    <p class="card-text">${book.authors}</p>
+                    <a onclick="location.href='${book.buyNowUrl}'" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+            </div>
             `
         }
         else {
-            var buyNow = 'This book is not available for purchase'
             readingList.innerHTML += `
-            <h4>${book.title} <span class="badge badge-secondary">${buyNow}</span></h4>
+            <div class="card col-8 py-15px mb-3">
+            <div class="card">
+                <div class="card-header">
+                This book is unavailable
+                </div>
+            <div class="card-body">
+                <h5 class="card-title">${book.title}</h5>
+                <p class="card-text">${book.authors}</p>
+            </div>
+            </div>
+            </div>
             `
         }
         
