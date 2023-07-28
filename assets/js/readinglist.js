@@ -18,16 +18,5 @@ function displayReadingList () {
     }
 
 }
-var removeButton = document.getElementById('removeBtn');
-var buyButton = document.getElementById('buyButton'); 
-
-removeButton.classList.add('invisible')
-buyButton.classList.add('invisible')
-
-readingList.onclick = ()=> {
-buyButton.classList.remove('invisible');
-removeButton.classList.remove('invisible')
- 
-}
 
 
