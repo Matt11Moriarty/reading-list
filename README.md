@@ -6,4 +6,5 @@ resources:
 
 1. Tailwind CSS: https://v1.tailwindcss.com/components/cards
 2. Google books API: https://developers.google.com/books/docs/v1/using
-3. Currency converter API: https://exchangeratesapi.io/documentation/
+3. Gif api: https://developers.giphy.com/docs/api/#quick-start-guide
+4. Google fonts: https://fonts.google.com/specimen/Caveat

@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 
 var googleApiKey = 'AIzaSyCMRulduu9lrdze-0XMvjZD3qSv5Kweg_g'
 var googleApi = 'https://www.googleapis.com/books/v1/volumes?' 
@@ -11,6 +12,7 @@ var gifApi = 'https://api.giphy.com/v1/gifs/search?'
 var searchButton = document.querySelector('#searchButton');
 var searchInput = document.querySelector('#searchBar');
 var gifElement = document.querySelector('#gifEl');
+var cancelButton = document.querySelector('#cancelButton');
 
 //event listener
 searchButton.addEventListener('click', function () {
@@ -29,7 +31,7 @@ function formatSearch (unformattedSearch) {
 
 
 function getResults (trimmedSearchValue) {
-    var searchResultsUri = `${googleApi}q=${trimmedSearchValue}&maxResults=10`
+    var searchResultsUri = `${googleApi}q=${trimmedSearchValue}&maxResults=10&key=${googleApiKey}`
     var results = []
 
     fetch(searchResultsUri)
@@ -56,12 +58,13 @@ searchResults.addEventListener('click', function (event) {
         var title = card.querySelector('.card-title').textContent;
         var authors = card.querySelector('.card-text:nth-child(3)').textContent;
         var smallThumbnail = card.querySelector('.card-img-top').getAttribute('src')
-        addtoReadingList(title, authors, smallThumbnail);
+        var purchaseLink = card.querySelector('.card-title').dataset.buynowlink
+        addtoReadingList(title, authors, smallThumbnail, purchaseLink);
     }
 });
 
 //get reading list from local storage
-function addtoReadingList(title, authors, smallThumbnail) {
+function addtoReadingList(title, authors, smallThumbnail, purchaseUrl) {
     var existingList = JSON.parse(localStorage.getItem('readingList')) || [];
     var isBookInList = existingList.some(function(book) {
         return book.title === title;
@@ -71,11 +74,25 @@ function addtoReadingList(title, authors, smallThumbnail) {
         existingList.push( {
             title: title,
             authors: authors,
-            smallThumbnail: smallThumbnail
+            smallThumbnail: smallThumbnail,
+            buyNowUrl: purchaseUrl
         });
         localStorage.setItem('readingList', JSON.stringify(existingList));
     }
 }
+
+// event listener for cancel button
+cancelButton.addEventListener('click', function () {
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+})
+
+  // Event listener for the form's submit event
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var searchInputValue = searchInput.value;
+    formatSearch(searchInputValue);
+  });
 
 //get gif api
 function getGif (trimmedSearchValue) {
@@ -93,13 +110,19 @@ function getGif (trimmedSearchValue) {
 
 //create list 
 function generateResultsList (resultsArray) {
+    searchResults.innerHTML = '';
     for (let i = 0; i < resultsArray.length; i++) {
         const book = resultsArray[i];
+        var purchaseLink = ''
+        if (book.saleInfo.buyLink) {
+            purchaseLink = book.saleInfo.buyLink;
+        }
+        console.log(purchaseLink);
         searchResults.innerHTML += `        
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="${book.volumeInfo.imageLinks.smallThumbnail}" alt="Image of ${book.volumeInfo.title} cover">
             <div class="card-body">
-                <h5 class="card-title">${book.volumeInfo.title}</h5>
+                <h5 data-buynowlink="${purchaseLink}" class="card-title">${book.volumeInfo.title}</h5>
                 <p class="card-text">${book.volumeInfo.subtitle}</p>
                 <p class="card-text">${book.volumeInfo.authors.join(", ")}</p>
                 <a href="#" class="btn btn-primary">Add to reading list</a>
@@ -110,8 +133,10 @@ function generateResultsList (resultsArray) {
 }
 
 function generateGif (gifLink) {
+    gifElement.innerHTML = '';
     gifElement.innerHTML += `
     <img src="${gifLink}" alt="Gif from search result">
     `
 }
 
+});
