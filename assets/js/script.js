@@ -119,7 +119,7 @@ function generateResultsList (resultsArray) {
         }
         console.log(purchaseLink);
         searchResults.innerHTML += `        
-        <div class="card" style="width: 18rem;">
+        <div class="card col-3 shadow-lg p-2 mb-5 bg-white rounded m-5" style="width: 18rem;">
             <img class="card-img-top" src="${book.volumeInfo.imageLinks.smallThumbnail}" alt="Image of ${book.volumeInfo.title} cover">
             <div class="card-body">
                 <h5 data-buynowlink="${purchaseLink}" class="card-title">${book.volumeInfo.title}</h5>
