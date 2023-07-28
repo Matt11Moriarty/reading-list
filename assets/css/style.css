@@ -17,4 +17,6 @@ body {
 .modal-container {
     z-index: 51;
 }
-
+.unavailable {
+    background: rgba(212, 2, 2, 0.589);
+}
