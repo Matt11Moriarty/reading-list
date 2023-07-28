@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
-    font-family: 'Caveat', cursive;
-    height: 100%;
+body {
+    font-family: 'Caladea', serif;
 }
    /* Additional styles for the modal */
 .modal {
