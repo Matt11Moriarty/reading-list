@@ -35,7 +35,7 @@ function displayReadingList () {
             readingList.innerHTML += `
             <div class="card col-8 py-15px mb-3">
             <div class="card">
-                <div class="card-header bg-danger">
+                <div class="card-header unavailable">
                 This book is unavailable
                 <button onclick="removeBook(${i})"class="btn btn-danger btn-sm float-end">Remove</button>
                 </div>
