@@ -22,6 +22,16 @@ searchButton.addEventListener('click', function () {
     formatSearch(searchInputValue);
 });
 
+//Event listener for enter key press in search input
+searchBar.addEventListener('keydown', function (event) {
+    //check if key pressed is enter key (key code 13)
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        const searchInputValue = searchBar.value;
+        formatSearch(searchInputValue);
+    }
+});
+
 //functions
 
 //replaces " " with "+"
