@@ -5,7 +5,6 @@ var googleApi = 'https://www.googleapis.com/books/v1/volumes?'
 
 var gifApiKey = 'BapaP6tBvX47P2VTz6hSD0ZageGjw2Mu'
 var gifApi = 'https://api.giphy.com/v1/gifs/search?'
-//https://api.giphy.com/v1/gifs/search?limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips&q=harry+potter&api_key=BapaP6tBvX47P2VTz6hSD0ZageGjw2Mu
 
 //query selectors
 
@@ -59,7 +58,6 @@ function getResults (trimmedSearchValue) {
     .catch(function (error) {
         console.error('Error fetching data:', error);
     });
-    // console.log(results[0].volumeInfo.title);
     
 }  
 // event listener for "add to reading list"
@@ -143,7 +141,6 @@ function generateResultsList (resultsArray) {
         if (book.saleInfo.buyLink) {
             purchaseLink = book.saleInfo.buyLink;
         }
-        console.log(purchaseLink);
         searchResults.innerHTML += `        
         <div class="card col-12 col-sm-6 col-md-4 col-lg-3 shadow-lg p-2 mb-5 bg-white rounded m-2">
             <img class="card-img-top" src="${book.volumeInfo.imageLinks.smallThumbnail}" alt="Image of ${book.volumeInfo.title} cover">
