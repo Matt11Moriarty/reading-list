@@ -59,11 +59,22 @@ searchResults.addEventListener('click', function (event) {
         var card = event.target.closest('.card');
         var title = card.querySelector('.card-title').textContent;
         var authors = card.querySelector('.card-text:nth-child(3)').textContent;
-        var smallThumbnail = card.querySelector('.card-img-top').getAttribute('src')
-        var purchaseLink = card.querySelector('.card-title').dataset.buynowlink
+        var smallThumbnail = card.querySelector('.card-img-top').getAttribute('src');
+        var purchaseLink = card.querySelector('.card-title').dataset.buynowlink;
         addtoReadingList(title, authors, smallThumbnail, purchaseLink);
+        showReadingListModal();
     }
 });
+
+function showReadingListModal () {
+    var modal = document.querySelector('#reading-list-modal');
+    modal.classList.remove("hidden");
+
+    setTimeout(function() {
+        modal.classList.add("hidden");
+    }, 1500)
+
+}
 
 //get reading list from local storage
 function addtoReadingList(title, authors, smallThumbnail, purchaseUrl) {
@@ -127,7 +138,7 @@ function generateResultsList (resultsArray) {
                 <h5 data-buynowlink="${purchaseLink}" class="card-title">${book.volumeInfo.title}</h5>
                 <p class="card-text">${book.volumeInfo.subtitle}</p>
                 <p class="card-text">${book.volumeInfo.authors.join(", ")}</p>
-                <a href="#" class="btn btn-primary">Add to reading list</a>
+                <a href="#" class="btn btn-primary reading-list-btn">Add to reading list</a>
             </div>
         </div>
         `;
