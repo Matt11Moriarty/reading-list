@@ -137,6 +137,10 @@ function generateResultsList (resultsArray) {
     for (let i = 0; i < resultsArray.length; i++) {
         const book = resultsArray[i];
         var purchaseLink = ''
+        var subtitle = ''
+        if (book.volumeInfo.subtitle) {
+            subtitle = book.volumeInfo.subtitle
+        }
         if (book.saleInfo.buyLink) {
             purchaseLink = book.saleInfo.buyLink;
         }
@@ -146,7 +150,7 @@ function generateResultsList (resultsArray) {
             <img class="card-img-top" src="${book.volumeInfo.imageLinks.smallThumbnail}" alt="Image of ${book.volumeInfo.title} cover">
             <div class="card-body">
                 <h5 data-buynowlink="${purchaseLink}" class="card-title">${book.volumeInfo.title}</h5>
-                <p class="card-text">${book.volumeInfo.subtitle}</p>
+                <p class="card-text">${subtitle}</p>
                 <p class="card-text">${book.volumeInfo.authors.join(", ")}</p>
                 <a href="#" class="btn btn-primary reading-list-btn">Add to reading list</a>
             </div>
