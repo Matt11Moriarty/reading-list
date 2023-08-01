@@ -14,14 +14,10 @@ No steps necessary for install. Should be able to to simply click on the site an
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
-
+The following demo demonstrates how to navigate and use site.  
+    
+    ![website demo gif](./assets/images/bookfinderdemo.gif)
+    
 ## Features
 
 * Site uses two server side APIs in the form of Google books and GIPHY. 
