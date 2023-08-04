@@ -14,6 +14,8 @@ No steps necessary for install. Should be able to to simply click on the site an
 
 ## Usage
 
+Site URL: https://matt11moriarty.github.io/reading-list/
+
 The following demo demonstrates how to navigate and use site.  
     
 ![website demo gif](./assets/images/bookfinderdemo.gif)
